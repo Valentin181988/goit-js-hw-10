@@ -18,7 +18,7 @@ input.addEventListener('input', debounce(() => {
 }, 300));
 
 function fetchCountries(name) {
-    return fetch(`https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,flags,languages`)
+    fetch(`https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,flags,languages`)
         .then(response => {
             if (!response.ok) {
 
@@ -30,7 +30,7 @@ function fetchCountries(name) {
             }
             return response.json();
         }).then(responceProcesing)
-        .catch(error => { console.log(error) });
+          .catch(error => { console.log(error) });
 }
 
 function responceProcesing(countries) {
