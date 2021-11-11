@@ -41,36 +41,36 @@ function responceProcesing(countries) {
     };
 
     if (countries.length > 1) {
-        countries.forEach((country) => {
+        countries.map((country) => {
             countryRender(country);
-        });
+        }).join();
     };
 
     if (countries.length === 1) {
-        countries.forEach((country) => {
+        countries.map((country) => {
             countryCardRender(country);
-        });    
+        }).join();    
     };
 }
 
-function countryRender(country) {
+function countryRender({name,flags}) {
     countryList
-        .insertAdjacentHTML("beforeend", `<li class ="list"><img src="${country.flags.svg}" class ="size">${country.name.official}</li>`);   
+        .insertAdjacentHTML("beforeend", `<li class ="list"><img src="${flags.svg}" class ="size">${name.official}</li>`);   
 }
 
-function countryCardRender(country) {
-    console.log(country.flags.svg)
+function countryCardRender({name,capital,population,languages,flags}) {
+    console.log(languages)
     countryInfo.insertAdjacentHTML("beforeend",
         `<ul>
-           <li class ="list"><img src="${country.flags.svg}" class ="size">${country.name.official}</li>
+           <li class ="list"><img src="${flags.svg}" class ="size">${name.official}</li>
            <li class ="list">
-              <h2>Country:${country.capital}</h2>
+              <h2>Country:${capital}</h2>
            </li>
            <li class ="list">
-              <h2>Population:${country.population}</h2>
+              <h2>Population:${population}</h2>
            </li>
            <li class ="list">
-              <h2>Lenguages:${country.lenguages}</h2>
+              <h2>Languages:${languages}</h2>
            </li>
         </ul>`);
 }
