@@ -19,7 +19,7 @@ input.addEventListener('input', debounce(() => {
 }, 300));
 
 function fetchCountries(name) {
-    return fetch(`https://restcountries.com/v3.1/name/${name}?fields=name,capital,currencies,flags,languages`)
+    return fetch(`https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,flags,languages`)
         .then(response => {
             if (!response.ok) {
                 console.log(response)
@@ -55,13 +55,19 @@ function countryRender(country) {
 }
 
 function countryCardRender(country) {
+    console.log(country.flags.svg)
     countryInfo.insertAdjacentHTML("beforeend",
         `<ul>
-           <li class ="list">${country.name.official}</li>
-           <li class ="list">${country.capital}</li>
-           <li class ="list">${country.population}</li>
-           <li class ="list" <img src="${country.flags.svg}" class ="size"></li>
-           <li class ="list">${country.languages}</li>
+           <li class ="list"><img src="${country.flags.svg}" class ="size">${country.name.official}</li>
+           <li class ="list">
+              <h2>Country:${country.capital}</h2>
+           </li>
+           <li class ="list">
+              <h2>Population:${country.population}</h2>
+           </li>
+           <li class ="list">
+              <h2>Lenguages:${country.lenguages}</h2>
+           </li>
         </ul>`);
 }
 
