@@ -7,7 +7,6 @@ const countryInfo = document.querySelector('.country-info');
 
 input.addEventListener('input', debounce(() => {
     resetCountries();
-    console.log("deb")
 
     const name = input.value;
 
