@@ -44,7 +44,8 @@ function responceProcesing(countries) {
 }
 
 function countryRender(country) {
-    countryList.insertAdjacentHTML("beforeend", `<li><img src="${country.flags.svg}" class ="size list">${country.name.official}</li>`);
+    countryList
+        .insertAdjacentHTML("beforeend", `<li class ="list"><img src="${country.flags.svg}" class ="size list">${country.name.official}</li>`);
     
 }
 
