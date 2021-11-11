@@ -14,18 +14,23 @@ input.addEventListener('input', debounce(() => {
         return;
     }
 
-    fetchCountries(name).then(responceProcesing);
+    fetchCountries(name);
 }, 300));
 
 function fetchCountries(name) {
     return fetch(`https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,flags,languages`)
         .then(response => {
             if (!response.ok) {
-                console.log(response)
+
+                if (response.status === 404) {
+                    Notify.failure("Oops, there is no country with that name");
+                }
+                
                 throw new Error(response.statusText);
             }
             return response.json();
-        })
+        }).then(responceProcesing)
+        .catch(error => { console.log(error) });
 }
 
 function responceProcesing(countries) {
