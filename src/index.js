@@ -1,6 +1,7 @@
 import './css/styles.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 const debounce = require('lodash.debounce');
+
 const input = document.querySelector("#search-box");
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
@@ -29,11 +30,11 @@ function fetchCountries(name) {
                 throw new Error(response.statusText);
             }
             return response.json();
-        }).then(responceProcesing)
+        }).then(responseProcesing)
           .catch(error => { console.log(error) });
 }
 
-function responceProcesing(countries) {
+function responseProcesing(countries) {
     
     if (countries.length > 10) {
         Notify.info("Too many matches found. Please enter a more specific name.");
@@ -59,7 +60,8 @@ function countryRender({name,flags}) {
 }
 
 function countryCardRender({name,capital,population,languages,flags}) {
-    console.log(languages)
+    const languagesValue = Object.values(languages);
+
     countryInfo.insertAdjacentHTML("beforeend",
         `<ul>
            <li class ="list"><img src="${flags.svg}" class ="size">${name.official}</li>
@@ -70,7 +72,7 @@ function countryCardRender({name,capital,population,languages,flags}) {
               <h2>Population:${population}</h2>
            </li>
            <li class ="list">
-              <h2>Languages:${languages}</h2>
+              <h2>Languages:${languagesValue}</h2>
            </li>
         </ul>`);
 }
