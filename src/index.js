@@ -43,7 +43,7 @@ function responseProcessing(countries) {
 
 function countryRender({name,flags}) {
     countryList
-        .insertAdjacentHTML("beforeend", `<li class ="list"><img src="${flags.svg}" class ="size">${name.official}</li>`);   
+        .insertAdjacentHTML("beforeend", `<li class ="list"><img src="${flags.svg}" class ="size"><span class="fields">${name.official}</span></li>`);   
 }
 
 function countryCardRender({name,capital,population,languages,flags}) {
@@ -53,13 +53,13 @@ function countryCardRender({name,capital,population,languages,flags}) {
         `<ul>
            <li class ="list list-card"><img src="${flags.svg}" class ="size">${name.official}</li>
            <li class ="list">
-              <h2>Country: ${capital}</h2>
+              <h2>Country: <span class="fields">${capital}</span></h2>
            </li>
            <li class ="list">
-              <h2>Population: ${population}</h2>
+              <h2>Population: <span class="fields">${population}</span></h2>
            </li>
            <li class ="list">
-              <h2>Languages: ${languagesValue}</h2>
+              <h2>Languages: <span class="fields">${languagesValue}</span></h2>
            </li>
         </ul>`);
 }
