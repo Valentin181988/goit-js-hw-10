@@ -53,13 +53,13 @@ function countryCardRender({name,capital,population,languages,flags}) {
         `<ul>
            <li class ="list"><img src="${flags.svg}" class ="size">${name.official}</li>
            <li class ="list">
-              <h2>Country:${capital}</h2>
+              <h2>Country: ${capital}</h2>
            </li>
            <li class ="list">
-              <h2>Population:${population}</h2>
+              <h2>Population: ${population}</h2>
            </li>
            <li class ="list">
-              <h2>Languages:${languagesValue}</h2>
+              <h2>Languages: ${languagesValue}</h2>
            </li>
         </ul>`);
 }
