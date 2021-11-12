@@ -1,7 +1,7 @@
 import './css/styles.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 const debounce = require('lodash.debounce');
-
+import API from './fetch-api';
 const input = document.querySelector("#search-box");
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
@@ -15,26 +15,12 @@ input.addEventListener('input', debounce(() => {
         return;
     }
 
-    fetchCountries(name);
+    API.fetchCountries(name)
+        .then(responseProcessing)
+          .catch(error => { console.log(error) });;
 }, 300));
 
-function fetchCountries(name) {
-    fetch(`https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,flags,languages`)
-        .then(response => {
-            if (!response.ok) {
-
-                if (response.status === 404) {
-                    Notify.failure("Oops, there is no country with that name");
-                }
-                
-                throw new Error(response.statusText);
-            }
-            return response.json();
-        }).then(responseProcesing)
-          .catch(error => { console.log(error) });
-}
-
-function responseProcesing(countries) {
+function responseProcessing(countries) {
     
     if (countries.length > 10) {
         Notify.info("Too many matches found. Please enter a more specific name.");
