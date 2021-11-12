@@ -27,20 +27,27 @@ h2 {
   padding: 20px;
   width: 500px;
   margin-bottom: 16px;
-  border: none;
+  border: 1px solid #faf7f7;
   outline: 1px solid #141414;
+  border-radius: 2px;
   margin-bottom: 15px;
 }
 
 #search-box:focus {
-  border: 2px solid royalblue;
+  border: 1px solid royalblue;
   outline: 1px royalblue;
+  border-radius: 3px;
 }
 
 .list {
   list-style-type: none;
   font-weight: 500;
   font-size: 25px;
+}
+
+.list-card {
+  font-weight: 500;
+  font-size: 35px;
 }
 
 .size {

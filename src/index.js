@@ -51,7 +51,7 @@ function countryCardRender({name,capital,population,languages,flags}) {
 
     countryInfo.insertAdjacentHTML("beforeend",
         `<ul>
-           <li class ="list"><img src="${flags.svg}" class ="size">${name.official}</li>
+           <li class ="list list-card"><img src="${flags.svg}" class ="size">${name.official}</li>
            <li class ="list">
               <h2>Country: ${capital}</h2>
            </li>
