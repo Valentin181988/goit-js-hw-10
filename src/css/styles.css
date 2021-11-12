@@ -12,18 +12,37 @@ body {
   line-height: 1.5;
 }
 
+ul {
+  padding-inline-start: 0;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 25px;
+}
+
 #search-box {
-  font: inherit;
-  padding: 8px;
-  max-width: 320px;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 20px;
+  width: 500px;
   margin-bottom: 16px;
+  border: none;
+  outline: 1px solid #141414;
+  margin-bottom: 15px;
+}
+
+#search-box:focus {
+  border: 2px solid royalblue;
+  outline: 1px royalblue;
 }
 
 .list {
   list-style-type: none;
+  font-weight: 500;
+  font-size: 25px;
 }
 
 .size {
-  width: 90px;
-  height: 60px;
+  width: 60px;
 }
