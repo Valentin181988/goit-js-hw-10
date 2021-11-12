@@ -1,7 +1,8 @@
 import './css/styles.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-const debounce = require('lodash.debounce');
 import API from './fetch-api';
+const debounce = require('lodash.debounce');
+
 const input = document.querySelector("#search-box");
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
