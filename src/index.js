@@ -7,22 +7,24 @@ const input = document.querySelector("#search-box");
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
 
-input.addEventListener('keydown', debounce((event) => {
-    
+input.addEventListener('input', debounce(() => {
+
+    resetCountries();
+
     const name = input.value.trim();
 
     if (name === "") {
-        resetCountries();
         return;
     }
 
-    if (event.key === 'Enter') {
+    if (!name) {
+        resetCountries();
         return;
     }
 
     API.fetchCountries(name)
         .then(responseProcessing)
-          .catch(error => { console.log(error) });;
+          .catch(error => { console.log(error) })
 }, 300));
 
 function responseProcessing(countries) {
