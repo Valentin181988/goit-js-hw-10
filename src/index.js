@@ -7,12 +7,12 @@ const input = document.querySelector("#search-box");
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
 
-input.addEventListener('input', debounce(() => {
+input.addEventListener('keydown', debounce((event) => {
     resetCountries();
+    console.log(event.key)
+    const name = input.value.trim();
 
-    const name = input.value;
-
-    if (name === "") {
+    if (name === "" || event.key === 'Enter') {
         return;
     }
 
@@ -28,7 +28,7 @@ function responseProcessing(countries) {
         return;
     };
 
-    if (countries.length > 1) {
+    if (countries.length >= 2) {
         countries.map((country) => {
             countryRender(country);
         }).join();
