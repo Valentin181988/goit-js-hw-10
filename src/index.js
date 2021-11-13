@@ -8,11 +8,15 @@ const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
 
 input.addEventListener('keydown', debounce((event) => {
-    resetCountries();
-    console.log(event.key)
+    
     const name = input.value.trim();
 
-    if (name === "" || event.key === 'Enter') {
+    if (name === "") {
+        resetCountries();
+        return;
+    }
+
+    if (event.key === 'Enter') {
         return;
     }
 
@@ -22,7 +26,8 @@ input.addEventListener('keydown', debounce((event) => {
 }, 300));
 
 function responseProcessing(countries) {
-    
+    resetCountries();
+
     if (countries.length > 10) {
         Notify.info("Too many matches found. Please enter a more specific name.");
         return;
